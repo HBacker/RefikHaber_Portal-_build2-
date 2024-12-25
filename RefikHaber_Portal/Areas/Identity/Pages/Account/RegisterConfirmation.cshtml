@@ -1,0 +1,32 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+<p>
+    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Hesabınızı doğrulamak için BURAYA tıklayınız.</a>
+</p>
+    }
+    else
+    {
+<p>
+        Please check your email to confirm your account.
+</p>
+    }
+}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var logoutButton = document.getElementById("confirm-link");
+        if (logoutButton) {
+            logoutButton.click();
+            window.location.href = '/';
+
+        }
+    });
+
+</script>
